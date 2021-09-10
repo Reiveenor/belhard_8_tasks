@@ -47,14 +47,14 @@ class Circle(Shape):
         r = self.r
         pi = self.pi
         x = 2 * pi * r
-        print("Длинна окружности равна: ", x)
+        return "Длинна окружности равна: ", x
 
     def get_square(self):
         super().__init_subclass__()
         r = self.r
         pi = self.pi
         x = pi * r ** 2
-        print("Площадь окружности равна: ", x)
+        return "Площадь окружности равна: ", x
 
 
 class Rectangle(Shape):
@@ -70,14 +70,14 @@ class Rectangle(Shape):
         a = self.a
         b = self.b
         x = 2 * a + 2 * b
-        print("Периметр прямоугольника равен: ", x)
+        return "Периметр прямоугольника равен: ", x
 
     def get_square(self):
         super().__init_subclass__()
         a = self.a
         b = self.b
         x = a * b
-        print("Площадь прямоугольника равна: ", x)
+        return "Площадь прямоугольника равна: ", x
 
 
 class Square(Rectangle):
@@ -86,13 +86,13 @@ class Square(Rectangle):
         super().__init_subclass__()
         a = self.a
         x = a * 4
-        print("Периметр квадрата равен: ", x)
+        return "Периметр квадрата равен: ", x
 
     def get_square(self):
         super().__init_subclass__()
         a = self.a
         x = a ** 2
-        print("Площадь квадрата равна: ", x)
+        return "Площадь квадрата равна: ", x
 
 
 if __name__ == '__main__':
