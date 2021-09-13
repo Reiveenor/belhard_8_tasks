@@ -21,3 +21,87 @@
 Периметр = 4 * a
 Площадь = a ** 2
 """
+from abc import ABC, abstractmethod
+
+
+class Shape(ABC):
+    @abstractmethod
+    def get_perimeter(self):
+        pass
+
+    @abstractmethod
+    def get_square(self):
+        pass
+
+
+class Circle(Shape):
+    r: int
+    pi: float
+
+    def __init__(self, r, pi):
+        self.r = r
+        self.pi = pi
+
+    def get_perimeter(self):
+        super().__init_subclass__()
+        r = self.r
+        pi = self.pi
+        x = 2 * pi * r
+        return "Длинна окружности равна: ", x
+
+    def get_square(self):
+        super().__init_subclass__()
+        r = self.r
+        pi = self.pi
+        x = pi * r ** 2
+        return "Площадь окружности равна: ", x
+
+
+class Rectangle(Shape):
+    a: int
+    b: int
+
+    def __init__(self, a, b):
+        self.a = a
+        self.b = b
+
+    def get_perimeter(self):
+        super().__init_subclass__()
+        a = self.a
+        b = self.b
+        x = 2 * a + 2 * b
+        return "Периметр прямоугольника равен: ", x
+
+    def get_square(self):
+        super().__init_subclass__()
+        a = self.a
+        b = self.b
+        x = a * b
+        return "Площадь прямоугольника равна: ", x
+
+
+class Square(Rectangle):
+
+    def get_perimeter(self):
+        super().__init_subclass__()
+        a = self.a
+        x = a * 4
+        return "Периметр квадрата равен: ", x
+
+    def get_square(self):
+        super().__init_subclass__()
+        a = self.a
+        x = a ** 2
+        return "Площадь квадрата равна: ", x
+
+
+if __name__ == '__main__':
+    cir = Circle(3, 3.14)
+    rec = Rectangle(5, 2)
+    sq = Square(5, 5)
+    cir.get_perimeter()
+    cir.get_square()
+    rec.get_perimeter()
+    rec.get_square()
+    sq.get_perimeter()
+    sq.get_square()

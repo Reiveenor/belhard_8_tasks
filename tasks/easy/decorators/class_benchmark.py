@@ -12,6 +12,32 @@
 """
 import time
 
-# start_time = time.time()
-# end_time = time.time()
-# difference = e - s
+
+def b_decorator(func):
+    def wrapper(*args, **kwargs):
+        print(f"Выполняем {func.__name__} с args: {args} и kwargs: {kwargs}")
+        start_time = time.time()
+        print(f"Время начала: {start_time}")
+        result = func(*args, **kwargs)
+        print(f"Выполнено {func.__name__}")
+        end_time = time.time()
+        print(f"Время окончания: {end_time}")
+        print(f"Всего затрачено времени на выполнение: {end_time - start_time}")
+        return result
+
+    return wrapper
+
+
+class Bench:
+
+    def __init__(self):
+        pass
+
+    @b_decorator
+    def hello(self, name: str):
+        print(f"Привет, {name}")
+
+
+if __name__ == '__main__':
+    b = Bench()
+    b.hello(input("Input some name: "))
